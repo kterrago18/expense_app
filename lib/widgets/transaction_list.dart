@@ -11,7 +11,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300.0,
+      height: 500.0,
       child: ListView.builder(
         itemBuilder: (context, index) {
           return Card(
@@ -22,12 +22,15 @@ class TransactionList extends StatelessWidget {
                 child: Text(
                   '\$${transactions[index].amount.toStringAsFixed(2)}',
                   style: TextStyle(
-                      color: Colors.purple,
+                      color: Theme.of(context).primaryColor,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold),
                 ),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.purple, width: 2.0)),
+                    border: Border.all(
+                  color: Theme.of(context).primaryColor,
+                  width: 2.0,
+                )),
                 padding: EdgeInsets.all(10.0),
               ),
               Column(

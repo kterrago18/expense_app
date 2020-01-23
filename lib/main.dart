@@ -13,8 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+    
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
+        accentColor: Colors.blueAccent
       ),
       home: MyHomePage(title: 'Expense App'),
     );
@@ -68,14 +70,19 @@ class _MyHomePageState extends State<MyHomePage> {
   void _startAddNewTransaction(BuildContext context) {
     showModalBottomSheet(
         context: context,
-        builder: (_){
-          return NewTransaction(_addNewTransaction);
+        builder: (_) {
+          return GestureDetector(
+            onTap: (){},
+            child: NewTransaction(_addNewTransaction),
+            behavior: HitTestBehavior.opaque,
+          );
         });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: Text(widget.title),
         actions: <Widget>[
@@ -88,6 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         //scrollDirection: Axis.vertical,
         child: Column(
+         // mainAxisSize: MainAxisSize.min,
           //mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
