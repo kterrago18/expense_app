@@ -13,11 +13,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-    
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        accentColor: Colors.blueAccent
-      ),
+          fontFamily: 'WorkSans',
+          textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                  fontFamily: 'Caveat',
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold)),
+          appBarTheme: AppBarTheme(
+              textTheme: ThemeData.light().textTheme.copyWith(
+                  title: TextStyle(
+                      fontFamily: 'Caveat',
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold))),
+          primarySwatch: Colors.purple,
+          accentColor: Colors.blueAccent),
       home: MyHomePage(title: 'Expense App'),
     );
   }
@@ -33,26 +43,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 69.76,
-      dateTime: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'New Pants',
-      amount: 69.76,
-      dateTime: DateTime.now(),
-    ),
-    Transaction(
-      id: 't3',
-      title: 'New Shirts',
-      amount: 69.76,
-      dateTime: DateTime.now(),
-    ),
-  ];
+  final List<Transaction> _transactions = [];
 
   void _addNewTransaction({String title, double amount}) {
     final newTransaction = Transaction(
@@ -72,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
         context: context,
         builder: (_) {
           return GestureDetector(
-            onTap: (){},
+            onTap: () {},
             child: NewTransaction(_addNewTransaction),
             behavior: HitTestBehavior.opaque,
           );
@@ -82,7 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       appBar: AppBar(
         title: Text(widget.title),
         actions: <Widget>[
@@ -95,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         //scrollDirection: Axis.vertical,
         child: Column(
-         // mainAxisSize: MainAxisSize.min,
+          // mainAxisSize: MainAxisSize.min,
           //mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
